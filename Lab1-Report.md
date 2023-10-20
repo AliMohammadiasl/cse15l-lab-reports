@@ -1,5 +1,6 @@
 # Lab 1 Report
 ![Image](Lab1CD.png)
+![Image](Lab1CD2.png)
 I tried using `cd` on its own and it did nothing as we did not give it a directory to switch to. The point of the `cd` command is to change the directory of our code/files, hence why it is "cd".
 Then I tried `cd lecture1` which switched the directory to lecture1. That is because we specified a directory that we want to change to. 
 Then when I tried using `cd` to a file, it gave an error saying that it is not a directory. The whole function of `cd` is to change directory, therefore, it will not work on a file. 
