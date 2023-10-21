@@ -60,7 +60,12 @@ Although the type of `wordlist` is string, it can take int values as displayed i
 I mirror the answer for the first image. This is the example where the URI includes a number. Basically what happens is that it assumes that the URI is going to be a type string and converts all of it to a string. Once you add the given URI to the ArrayList, it converts to String type. 
 
 #### Part 2
-![Image](SSH KEY.png)
+
+##### Public Key
+
+
+##### Private Key
+![Image](SshKey.png)
 
 
 
