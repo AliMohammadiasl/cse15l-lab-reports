@@ -62,6 +62,7 @@ I mirror the answer for the first image. This is the example where the URI inclu
 #### Part 2
 
 ##### Public Key
+![Image](PublicKey.png)
 
 
 ##### Private Key
