@@ -1,5 +1,6 @@
 # Lab Report 2
 #### Part 1
+##### Code for `StringServer`
 ```java
 import java.io.IOException;
 import java.net.URI;
@@ -54,6 +55,7 @@ class StringServer {
 When we use anything after the /, aka giving the url a path, the Hnadler class looks at the input. It looks the given url path and compares it to "/add-message". If the url path is not the same then it will return an error message. If the url path is the same, then it will enter the next stage. The next step is to separate the equal sign from the message. Then it checks to see whether there is a "s" before the equal sign. This is basically the query check step. If it is equal to s then it will add the given word/paramater to `wordlist`. Word list is a string type arraylist, created to contain all of the given strings. Thereafter, the given paramaters are sent to a `toListS` function which basically turns them into a returnable string value. We do have to mention that there is a **handleRequest** method that takes care of all of that within the handler class. The `handleRequest` method takes it `URI` type. <br>
 Although the type of `wordlist` is string, it can take int values as displayed in the next image. That is because it is an ArrayList which is dynamic. One thing that was interesting was when I used spaces in the URI. In the actual URL section on google, the spaces were replaced by "%20", however, the spaces are replaced by plus signs on the return statement of the website.  
 
+
 ##### Image 2 Using `add-message`
 ![Image](UsingAdd2.png)
 
@@ -65,8 +67,20 @@ I mirror the answer for the first image. This is the example where the URI inclu
 ![Image](PublicKey.png)
 
 
+
 ##### Private Key
 ![Image](SshKey.png)
 
+
+
+##### Logging In without password 
+![Image](LoggingIn.png)
+
+
+#### Part 3
+
+SomethingI learned in week 2 and 3 was to set up a simple server and add simple commands to it. I found it a bit challenging changing the server from `NumberServer` to a `StringServer`. What this taught me was to experiment with different things and run tests to make sure everything works well. I was able to modify the code of `NumberServer` and change its functions to satisfy `StringServer`. <br>
+Another skill that I improved on was just looking at code. I have experience of being given a code and its input/output and I was told to say what it does but this lab helped me improve those skills even more. I really liked when we were given the output in the skill demo and told to look through the code to see what is exactly happening, etc. <br>
+Lastly, I enjoyed learning about the ssh command and remote computing. I have never had experience in connecting to another computer and making my directory there so it was a great new experience for me. 
 
 
