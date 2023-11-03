@@ -52,14 +52,15 @@ class StringServer {
 ##### Image 1 Using `add-message`
 ![Image](UsingAdd1.png)
 
-When we use anything after the /, aka giving the url a path, the Hnadler class looks at the input. It looks the given url path and compares it to "/add-message". If the url path is not the same then it will return an error message. If the url path is the same, then it will enter the next stage. The next step is to separate the equal sign from the message. Then it checks to see whether there is a "s" before the equal sign. This is basically the query check step. If it is equal to s then it will add the given word/paramater to `wordlist`. Word list is a string type arraylist, created to contain all of the given strings. Thereafter, the given paramaters are sent to a `toListS` function which basically turns them into a returnable string value. We do have to mention that there is a **handleRequest** method that takes care of all of that within the handler class. The `handleRequest` method takes it `URI` type. <br>
-Although the type of `wordlist` is string, it can take int values as displayed in the next image. That is because it is an ArrayList which is dynamic. One thing that was interesting was when I used spaces in the URI. In the actual URL section on google, the spaces were replaced by "%20", however, the spaces are replaced by plus signs on the return statement of the website.  
+When we use anything after the /, aka giving the url a path, the Hnadler class looks at the input. It looks the given url path and compares it to "/add-message". If the url path is not the same then it will return an error message. If the url path is the same, then it will enter the next stage. The next step is to separate the equal sign from the message. Then it checks to see whether there is a "s" before the equal sign. This is basically the query check step. If it is equal to s then it will add the given word from the user to `wordlist`. In this case we give it "Hi" and "CSE15L". Word list is a string type arraylist, created to contain all of the given strings. Thereafter, the given paramaters are sent to a `toListS` function which basically turns them into a returnable string value. In this case it returns "Hi" in the first line then returns "CSE15L" in the second line. We do have to mention that there is a **handleRequest** method that takes care of all of that within the handler class. The `handleRequest` method takes it `URI` type. <br>
+The type of `wordlist` is an arraylist of strings, however, it can take int values as displayed in the next image. That is because the arraylist takes the integer inputs and turns them into strings. As seen in the "CSE15L" example, it takes 15 and turns it into a string. One thing that was interesting was when I used spaces in the URI. In the actual URL section on google, the spaces were replaced by "%20", however, the spaces are replaced by plus signs on the return statement of the website.  
 
 
 ##### Image 2 Using `add-message`
 ![Image](UsingAdd2.png)
 
-I mirror the answer for the first image. This is the example where the URI includes a number. Basically what happens is that it assumes that the URI is going to be a type string and converts all of it to a string. Once you add the given URI to the ArrayList, it converts to String type. 
+I mirror the answer for the first image. This is the example where the URI includes a number. The specific argument given to handleRequest is `/add-message?s=CSE15L`. Then `handleRequest` splits it and takes "CSE15L" as the string to display. Basically what happens is that it assumes that the URI is going to be a type string and converts all of it to a string. Once you add the given URI to the ArrayList, it converts to String type. <br>
+`wordlist` is initally just an empty arraylist of type string. When we added "Hi", it stored it as one of its elements. Then when we added "CSE15L", it also included that inside it. 
 
 #### Part 2
 
@@ -70,7 +71,7 @@ I mirror the answer for the first image. This is the example where the URI inclu
 
 ##### Private Key
 ![Image](SshKey.png)
-
+`id_rsa` is the private key.
 
 
 ##### Logging In without password 
