@@ -24,3 +24,4 @@ int[] input1 = {0,0};
 ```
 The input is `{0,0}` and the output is also `{0,0}`
 ##### Screenshot 1 (Failure inducing input):
+![Image](FailureInducing.png)
