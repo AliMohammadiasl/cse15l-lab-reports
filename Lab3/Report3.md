@@ -149,3 +149,8 @@ $grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 ./technical/biomed/gb-2002-3-10-research0055.txt:          tyrosine kinase', 'God' = 'Godzilla'). Short acronyms are
 ./technical/biomed/gb-2002-3-10-research0055.txt-          especially problematic (for example, 'CT', the
 ```
+###### Explanation:
+- The `-B` and the `-A` stand for before and after. Badically, they take in a paramater number, to display that many lines before and after the specified paramter, hence why they get their name "before-context" and "after-context". In this case, I used the word "emergency" and "God" and checked the context of each. In the first, I commanded that two lines before and two lines after the word emergency be displayed. In the second case, I commanded one line before and one line after.
+- The `-m` is used to limit the count of matches. Basically, if there is no `-m` every case of the paramter will be displayed with the before and after counts.
+- In the second exampele, I used `-r` (recursive), which allowed me to see multiple occurrences of the word "God" wil one line before and one line after it.
+- This can be useful if one is trying to track down a certain pattern, but needs to see some context for the word. Therefore one can use before and after to see what surrounds the pattern. 
