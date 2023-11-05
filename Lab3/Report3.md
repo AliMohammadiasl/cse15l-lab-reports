@@ -1,7 +1,11 @@
 # Lab Report 3
+
 ## Part 1
+
 ##### Reverse In Place bug
+
 ##### Initial code:
+
 ```java
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
@@ -10,6 +14,7 @@ static void reverseInPlace(int[] arr) {
   }
 ```
 ##### Failure inducing input
+
 ```java
 int[] input = {1,2,3};
 ArrayExamples.reverseInPlace(input);
@@ -17,6 +22,7 @@ assertArrayEquals(new int[]{3,2,1}, input);
 ```
 The expected output is `{3,2,1}` but the actual output is `{3,2,3}`.
 ##### Input that doesn't induce failure
+
 ```java
 int[] input1 = {0,0};
     ArrayExamples.reverseInPlace(input1);
@@ -24,11 +30,14 @@ int[] input1 = {0,0};
 ```
 The input is `{0,0}` and the output is also `{0,0}`
 ##### Screenshot 1 (Failure inducing input):
+
 ![Image](FailureInducing.png)
 ##### Screenshot 2 (Non-Failure inducing input): 
+
 ![Image](NonFailure.png)
 
 ##### Before:
+
 ```java
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
@@ -37,6 +46,7 @@ static void reverseInPlace(int[] arr) {
   }
 ```
 ##### After:
+
 ```java
 static void reverseInPlace(int[] arr) {
     int temp ;
@@ -48,25 +58,30 @@ static void reverseInPlace(int[] arr) {
   }
 ```
 ###### Explanation:
+
 I basically created a temporary variable `temp` to keep track of the current number. Then I was able to change the number at the current index with the number at `arr.length-i-1`. And then I was able to change the number at `arr.length-i-1` to the first number because now I actually have that number stored in a temporary variable. <br>
 Before creating the temporary variable, the function was just passing through the array and replacinf the number at the current index `i` with the number at index `arr.length-i-1`. This was producing the incorrect output because it was not keeping track of the number at the current index and swapping it with `arr.lentgh-i-1`.
 
 ## Part 2
 
 #### Number 1 - counting the amount of times a specific word occurs:
+
 ##### Example 1:
+
 ```java
 $grep -ro "god" ./technical | wc -l
 
 53
 ```
 ##### Example 2:
+
 ```java
 $ grep -ro "statement" ./technical/biomed | wc -l
 
 74
 ```
 ##### Explanation:
+
 - The `-r` option in `grep` enables a recursive search within directories. When combined with the `-r` flag, `grep` searches for the specified parameter, in this case "god", in all files within the given directory, in this case `technical` and `technical/biomed`, and its subdirectories.
 
 - The `-o` option in `grep` tells `grep` to output only the matched parts of the lines rather than entire lines. So if we run `grep -ro "god" ./technical`, it will return the files that include god and the word god itself. 
@@ -75,7 +90,9 @@ $ grep -ro "statement" ./technical/biomed | wc -l
 
 - Therefore, combining `grep -ro "god" ./technical | wc -l` displays the amount of times that the word "god" appears withing the files inside the `techncial` directory. We can change the word that we are looking for as well the specific directory that we look into, making this very useful if looking for a specific statement, word, or sentence.
 #### Number 2 - finding the line that the specific word is placed at:
+
 ##### Example 1: 
+
 ```java
 $ grep -nr "imagine" ./technical/biomed
 
@@ -100,19 +117,24 @@ $ grep -nr "imagine" ./technical/biomed
 ./technical/biomed/gb-2001-2-4-research0012.txt:328:          imagined) so that diagrams can be easily drawn by hand or
 ```
 ##### Example 2:
+
 ```java
 grep -nr "god" ./technical > godIntechnical.txt
 ```
 ##### Output: 
+
 ![Image](godTech.png)
 Inside the `.txt` file.
 
 ###### Explanation: 
+
 - The `-n` displays the line number with the matched line. When used, `grep` will print the line number before each line containing the matched pattern/paramtere, in this case "god" and "imagine".
 - In the first example, we are looking for the word "imagine" inside the `biomed` folder. The terminal directly returns every occurrence of imagine with the specific file and line.
 - In the second case, we looked for the word "god" inside the entire `technical` directory and then stored all of the occurrences inside a `.txt` file named `godIntechnical`. This is practical when there are a lot of occurrences of a certain pattern because insetad of having 1,000 lines of code on the terminal, we store them inside a `.txt` file and can use that in other cases.
 #### Number 3 - before-context and after-context:
+
 ##### Example 1:
+
 ```java
 $grep -m 1 -B 2 -A 2 "emergency" ./technical/911report/chapter-1.txt
 
@@ -123,6 +145,7 @@ $grep -m 1 -B 2 -A 2 "emergency" ./technical/911report/chapter-1.txt
     At 8:19, Ong reported:"The cockpit is not answering, somebody's stabbed in business class-and I think there's Mace-that we can't breathe-I don't know, I think we're getting hijacked." She then told of the stabbings of the two flight attendants.
 ```
 ##### Example 2: 
+
 ```java
 $grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 
@@ -151,17 +174,21 @@ $grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 ./technical/biomed/gb-2002-3-10-research0055.txt-          especially problematic (for example, 'CT', the
 ```
 ###### Explanation:
+
 - The `-B` and the `-A` stand for before and after. Badically, they take in a paramater number, to display that many lines before and after the specified paramter, hence why they get their name "before-context" and "after-context". In this case, I used the word "emergency" and "God" and checked the context of each. In the first, I commanded that two lines before and two lines after the word emergency be displayed. In the second case, I commanded one line before and one line after.
 - The `-m` is used to limit the count of matches. Basically, if there is no `-m` every case of the paramter will be displayed with the before and after counts.
 - In the second exampele, I used `-r` (recursive), which allowed me to see multiple occurrences of the word "God" wil one line before and one line after it.
 - This can be useful if one is trying to track down a certain pattern, but needs to see some context for the word. Therefore one can use before and after to see what surrounds the pattern.
 #### Number 4 - searching for multiple patterns:
+
 ##### Example 1:
+
 ```java
 $ grep -r -e "medicine" -e "blood" ./technical/biomed/ | wc -l
 1689
 ```
 ##### Example 2:
+
 ```java
 $ grep -r -e "court" -e "painful" ./technical/biomed/
 
@@ -190,12 +217,15 @@ $ grep -r -e "court" -e "painful" ./technical/biomed/
 ./technical/biomed/bcr284.txt:          60-70% confluence were treated with SAHA (courtesy of Dr
 ```
 ###### Explanation: 
+
 - The `-e` allows us to search for multiple differe patterns at once.
 - For the first example, I looked for the occurrences of the words "blood" and "medicine" in the `biomed` directory and found that there are 1,689 occurrences of them.
 - In the second example, I did not use `wc` and just returned the actual occurrences of the words "court" and "painful".
 - This can be useful when searching for multiple different patterns all at once. 
 ### Sources:
+
 ##### Source 1:
+
 - **ChatGPT** :
 - **Prompt 1**: "how to use grep to search for a certain word in all the files in a folder and i just care about the count not the actual location of each"
 - **Response 1**: "If you're interested in only counting the occurrences of a specific word in all files within a folder using grep, you can use the -ro option along with the wc command to count the total number of matches. Here's how you can do it:
@@ -232,5 +262,6 @@ Example:
 `grep -o "pattern" /path/to/directory` "
 **I used the before-context and after-context option from this response and changed to my own parameter and directory. I also added the `-m` so that I could control the number of times the pattern was displayed.**
 ##### Source 2: 
+
 - https://www.gnu.org/software/grep/manual/grep.html
 - This website is basically a cheat sheet of all the `grep` options. I used this to find the options and then experimented with the options on my own.
