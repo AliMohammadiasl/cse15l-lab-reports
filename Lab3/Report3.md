@@ -194,3 +194,43 @@ $ grep -r -e "court" -e "painful" ./technical/biomed/
 - For the first example, I looked for the occurrences of the words "blood" and "medicine" in the `biomed` directory and found that there are 1,689 occurrences of them.
 - In the second example, I did not use `wc` and just returned the actual occurrences of the words "court" and "painful".
 - This can be useful when searching for multiple different patterns all at once. 
+### Sources:
+##### Source 1:
+- **ChatGPT** :
+- **Prompt 1**: "how to use grep to search for a certain word in all the files in a folder and i just care about the count not the actual location of each"
+- **Response 1**: "If you're interested in only counting the occurrences of a specific word in all files within a folder using grep, you can use the -ro option along with the wc command to count the total number of matches. Here's how you can do it:
+`grep -ro "your_word_to_search" /path/to/your/folder | wc -l`
+Replace "your_word_to_search" with the word or pattern you want to count, and `/path/to/your/folder` with the actual path to the folder where you want to perform the search.
+For example, to count the occurrences of the word "example" in all files within a folder named "documents" located in your current directory:
+`grep -ro "example" ./documents | wc -l`
+This command will count the total number of occurrences of the word "example" in all files within the "documents" folder without displaying the actual location of each occurrence."
+**I changed this by using my own parameters and also using this on a whole directory rather than just one file.**
+- **Prompt 2**: "Give me a few grep options i can use for big directories full of files"
+- **Respone 2**: "Absolutely, when dealing with large directories full of files, there are several grep options that can be particularly useful: -r or --recursive: This option allows grep to perform a recursive search, going through all files within the specified directory and its subdirectories.
+
+Example:
+`grep -r "pattern" /path/to/directory`
+-i or --ignore-case: This option enables case-insensitive searches, which can be beneficial when you're unsure about the exact casing of the word you're looking for.
+
+`grep -i "pattern" /path/to/directory`
+-n or --line-number: This option displays the line number along with the matched line. It helps in quickly locating matches within files, which can be especially helpful in large files.
+
+--before-context and --after-context: These options allow you to print a specific number of lines before and after the matched line, providing context around the matches.
+
+Example:
+`grep --before-context=2 --after-context=2 "pattern" file.txt`
+
+Example:
+`grep -r "pattern" --include "*.txt" /path/to/directory`
+`grep -r "pattern" --exclude "*.log" /path/to/directory`
+--color=auto: This option highlights the matching text with color, making it easier to identify the matched pattern.
+Example:
+`grep --color=auto "pattern" /path/to/directory`
+-o or --only-matching: This option displays only the matched parts of the lines rather than entire lines. Useful for extracting specific information from larger files.
+
+Example:
+`grep -o "pattern" /path/to/directory` "
+**I used the before-context and after-context option from this response and changed to my own parameter and directory. I also added the `-m` so that I could control the number of times the pattern was displayed.**
+##### Source 2: 
+- https://www.gnu.org/software/grep/manual/grep.html
+- This website is basically a cheat sheet of all the `grep` options. I used this to find the options and then experimented with the options on my own.
