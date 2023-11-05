@@ -108,5 +108,44 @@ grep -nr "god" ./technical > godIntechnical.txt
 
 ###### Explanation: 
 - The `-n` displays the line number with the matched line. When used, `grep` will print the line number before each line containing the matched pattern/paramtere, in this case "god" and "imagine".
-- In the first example, we are looking for the word "imagine" inside the `biomed` folder. The terminal directly returns every occurance of imagine with the specific file and line.
-- In the second case, we looked for the word "god" inside the entire `technical` directory and then stored all of the occurances inside a `.txt` file named `godIntechnical`. This is practical when there are a lot of occurances of a certain pattern because insetad of having 1,000 lines of code on the terminal, we store them inside a `.txt` file and can use that in other cases. 
+- In the first example, we are looking for the word "imagine" inside the `biomed` folder. The terminal directly returns every occurrence of imagine with the specific file and line.
+- In the second case, we looked for the word "god" inside the entire `technical` directory and then stored all of the occurrences inside a `.txt` file named `godIntechnical`. This is practical when there are a lot of occurrences of a certain pattern because insetad of having 1,000 lines of code on the terminal, we store them inside a `.txt` file and can use that in other cases.
+#### Number 3 - before-context and after-context:
+##### Example 1:
+```java
+$grep -m 1 -B 2 -A 2 "emergency" ./technical/911report/chapter-1.txt
+
+    The hijackers quickly gained control and sprayed Mace, pepper spray, or some other irritant in the first-class cabin, in order to force the passengers and flight attendants toward the rear of the plane. They claimed they had a bomb.
+
+    About five minutes after the hijacking began, Betty Ong contacted the American Airlines Southeastern Reservations Office in Cary, North Carolina, via an AT&T airphone to report an emergency aboard the flight. This was the first of several occasions on 9/11 when flight attendants took action outside the scope of their training, which emphasized that in a hijacking, they were to communicate with the cockpit crew. The emergency call lasted approximately 25 minutes, as Ong calmly and professionally relayed information about events taking place aboard the airplane to authorities on the ground.     
+
+    At 8:19, Ong reported:"The cockpit is not answering, somebody's stabbed in business class-and I think there's Mace-that we can't breathe-I don't know, I think we're getting hijacked." She then told of the stabbings of the two flight attendants.
+```
+##### Example 2: 
+```java
+$grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
+
+./technical/biomed/1471-2091-2-13.txt-        The dispersion of the intein as a selfish genetic
+./technical/biomed/1471-2091-2-13.txt:        element is consistent with the work of Goddard and Burt [
+./technical/biomed/1471-2091-2-13.txt-        38 ] on the persistence of an intron with homing
+--
+./technical/biomed/1471-2172-2-10.txt-          +individuals (Hispanic) under the direction of Dr. Harold
+./technical/biomed/1471-2172-2-10.txt:          I. Laroche and Dr. E. Godreau, Center for Diagnosis and
+./technical/biomed/1471-2172-2-10.txt-          Treatment, Ponce. The aged population, recruited from the
+--
+./technical/biomed/1471-2210-1-3.txt-          culture medium. Separation of islets was carried out
+./technical/biomed/1471-2210-1-3.txt:          using dispase (1000 U/ml, Godo Shusei, Japan) as
+./technical/biomed/1471-2210-1-3.txt-          previously described [ 35 ] . Separated cells were again
+--
+./technical/biomed/1472-6882-1-7.txt-          Hallelujah Acres, Inc. (
+./technical/biomed/1472-6882-1-7.txt:          God's Way to Ultimate Health, Recipes
+./technical/biomed/1472-6882-1-7.txt-          for Life...from God's Garden, 21 Days to health the
+--
+./technical/biomed/1477-7827-1-17.txt-          bovine IFNγ (200 IU/ml; generous gift from Dr. Dale
+./technical/biomed/1477-7827-1-17.txt:          Godson, Veterinary Infectious Disease Organization,
+./technical/biomed/1477-7827-1-17.txt-          University of Saskatchewan, Saskatoon, Saskatchewan,
+--
+./technical/biomed/gb-2002-3-10-research0055.txt-          'tryptophanyl-tRNA synthetase', 'Sky' = 'TYRO3 protein
+./technical/biomed/gb-2002-3-10-research0055.txt:          tyrosine kinase', 'God' = 'Godzilla'). Short acronyms are
+./technical/biomed/gb-2002-3-10-research0055.txt-          especially problematic (for example, 'CT', the
+```
