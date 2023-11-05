@@ -72,5 +72,10 @@ $ 74
 - `wc -l` command stands for "word count". When used with the `-l`, it counts the number of lines. By piping the output of grep to wc `-l`, it calculates the total number of lines that grep finds in the files. Since `-o` in grep ensures that each match is on a separate line, `wc -l` effectively counts the total number of occurrences of the word or pattern. 
 
 - Therefore, combining `grep -ro "god" ./technical | wc -l` displays the amount of times that the word "god" appears withing the files inside the `techncial` directory. We can change the word that we are looking for as well the specific directory that we look into, making this very useful if looking for a specific statement, word, or sentence.
-#### Number 2 - 
+#### Number 2 - finding the line that the specific word is placed at:
+##### Example 1:
+```java
+grep -nr "god" ./technical > godIntechnical.txt
+```
+##### Output: 
 
