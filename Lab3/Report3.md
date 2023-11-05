@@ -56,13 +56,15 @@ Before creating the temporary variable, the function was just passing through th
 #### Number 1 - counting the amount of times a specific word occurs:
 ##### Example 1:
 ```java
-grep -ro "god" ./technical | wc -l
-$ 53
+$grep -ro "god" ./technical | wc -l
+
+53
 ```
 ##### Example 2:
 ```java
-grep -ro "statement" ./technical/biomed | wc -l
-$ 74
+$ grep -ro "statement" ./technical/biomed | wc -l
+
+74
 ```
 ##### Explanation:
 - The `-r` option in `grep` enables a recursive search within directories. When combined with the `-r` flag, `grep` searches for the specified parameter, in this case "god", in all files within the given directory, in this case `technical` and `technical/biomed`, and its subdirectories.
@@ -73,9 +75,38 @@ $ 74
 
 - Therefore, combining `grep -ro "god" ./technical | wc -l` displays the amount of times that the word "god" appears withing the files inside the `techncial` directory. We can change the word that we are looking for as well the specific directory that we look into, making this very useful if looking for a specific statement, word, or sentence.
 #### Number 2 - finding the line that the specific word is placed at:
-##### Example 1:
+##### Example 1: 
+```java
+$ grep -nr "imagine" ./technical/biomed
+
+./technical/biomed/1471-213X-1-13.txt:383:          dlA dx2 mutant embryos. We imagined
+./technical/biomed/1471-2148-3-3.txt:138:        away from this genotype by adding mutations, imagine that
+./technical/biomed/1471-2156-3-4.txt:763:          previously imagined.
+./technical/biomed/1471-2164-3-19.txt:273:        imagine two szenarios making ROC analysis inappropriate for
+./technical/biomed/1471-2202-3-5.txt:158:          perspective: If we imagine that
+./technical/biomed/1471-2288-2-11.txt:12:          change the age of death. As an analogy, imagine waiting
+./technical/biomed/1471-2288-3-9.txt:69:        - in what they imagined to be a flawless mechanistic
+./technical/biomed/1471-2431-2-11.txt:15:        classroom students sometimes use self-hypnosis to imagine
+./technical/biomed/1471-2431-2-11.txt:111:        control. Typically, children chose to imagine a favorite
+./technical/biomed/1471-2431-2-11.txt:114:        symptom. For example, some patients learned to imagine the
+./technical/biomed/1471-2431-2-11.txt:116:        to imagine changing the appearance to a normal one.
+./technical/biomed/1471-2431-2-11.txt:128:        in a few minutes, by suggesting that the patient imagine
+./technical/biomed/1471-2458-3-20.txt:354:        accurately imagined. Nonetheless, it is worth noting that
+./technical/biomed/1472-6750-2-21.txt:329:          such as luciferase. It is also possible to imagine that
+./technical/biomed/1472-684X-2-1.txt:272:        system, it is easy to imagine how a resident's reluctance
+./technical/biomed/1476-4598-2-28.txt:579:        101 ] , as one can imagine that the cooperative action of
+./technical/biomed/1477-7827-1-13.txt:508:          one might imagine, e.g. just placental aging. Table
+./technical/biomed/gb-2001-2-4-research0010.txt:785:        imagined.
+./technical/biomed/gb-2001-2-4-research0012.txt:328:          imagined) so that diagrams can be easily drawn by hand or
+```
+##### Example 2:
 ```java
 grep -nr "god" ./technical > godIntechnical.txt
 ```
 ##### Output: 
+![Image](godTech.png)
 
+###### Explanation: 
+- The `-n` displays the line number with the matched line. When used, `grep` will print the line number before each line containing the matched pattern/paramtere, in this case "god" and "imagine".
+- In the first example, we are looking for the word "imagine" inside the `biomed` folder. The terminal directly returns every occurance of imagine with the specific file and line.
+- In the second case, we looked for the word "god" inside the entire `technical` directory and then stored all of the occurances inside a `.txt` file named `godIntechnical`. This is practical when there are a lot of occurances of a certain pattern because insetad of having 1,000 lines of code on the terminal, we store them inside a `.txt` file and can use that in other cases. 
