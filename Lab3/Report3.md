@@ -105,6 +105,7 @@ grep -nr "god" ./technical > godIntechnical.txt
 ```
 ##### Output: 
 ![Image](godTech.png)
+Inside the `.txt` file.
 
 ###### Explanation: 
 - The `-n` displays the line number with the matched line. When used, `grep` will print the line number before each line containing the matched pattern/paramtere, in this case "god" and "imagine".
@@ -153,4 +154,43 @@ $grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 - The `-B` and the `-A` stand for before and after. Badically, they take in a paramater number, to display that many lines before and after the specified paramter, hence why they get their name "before-context" and "after-context". In this case, I used the word "emergency" and "God" and checked the context of each. In the first, I commanded that two lines before and two lines after the word emergency be displayed. In the second case, I commanded one line before and one line after.
 - The `-m` is used to limit the count of matches. Basically, if there is no `-m` every case of the paramter will be displayed with the before and after counts.
 - In the second exampele, I used `-r` (recursive), which allowed me to see multiple occurrences of the word "God" wil one line before and one line after it.
-- This can be useful if one is trying to track down a certain pattern, but needs to see some context for the word. Therefore one can use before and after to see what surrounds the pattern. 
+- This can be useful if one is trying to track down a certain pattern, but needs to see some context for the word. Therefore one can use before and after to see what surrounds the pattern.
+#### Number 4 - searching for multiple patterns:
+##### Example 1:
+```java
+$ grep -r -e "medicine" -e "blood" ./technical/biomed/ | wc -l
+1689
+```
+##### Example 2:
+```java
+$ grep -r -e "court" -e "painful" ./technical/biomed/
+
+./technical/biomed/1471-2164-3-9.txt:        quick-to-court (a mutation that
+./technical/biomed/1471-2202-3-1.txt:        the male courtship song, and such acoustical data have been
+./technical/biomed/1471-2202-3-1.txt:        courtship song, and locomotor-activity rhythms occur on
+./technical/biomed/1471-2202-3-1.txt:        courtship song rhythms [ 19 20 ] , but not heartbeat [ 25 ]
+./technical/biomed/1471-2202-3-1.txt:        rhythmic IPI in courtship song). However, we have been
+./technical/biomed/1471-2202-3-1.txt:          rhythmicity [see [ 21 ] for examples involving courtship
+./technical/biomed/1471-2202-3-1.txt:          observed in the analysis of courtship song as a
+./technical/biomed/1471-2202-3-1.txt:          maximal courtship was placed in the recording chamber
+./technical/biomed/1471-2202-3-10.txt:          Sigma, L-2020), agrin (1:40, courtesy of Dr. Herman
+./technical/biomed/1471-2210-1-4.txt:          doses of olanzapine (provided as a courtesy by Ely Lilly,
+./technical/biomed/1471-2334-1-17.txt:          Program, Rockville, MD; courtesy of Drs. D. Burton, H.
+./technical/biomed/1472-6750-2-2.txt:        vehicles for TFX to the infection court.
+./technical/biomed/1472-684X-1-5.txt:          effective, and much less painful.
+./technical/biomed/1472-684X-2-2.txt:        painful therapeutic procedures (e.g. wound debridement and
+./technical/biomed/1472-6882-1-10.txt:          any painful or swollen joints and inner body parts [ 94
+./technical/biomed/1472-6882-1-7.txt:          being painful upon palpation. Subjects underwent a
+./technical/biomed/1472-6882-1-7.txt:        painful tender points were found among responders and
+./technical/biomed/1472-6890-3-2.txt:          and 16 were received courtesy of Dr E-M de Villiers
+./technical/biomed/1476-511X-1-2.txt:          Boulogne-Billancourt, France), which consisted of
+./technical/biomed/1476-511X-1-2.txt:          Boulogne-Billancourt, France), rinsed as described for
+./technical/biomed/ar309.txt:          have at least 10 painful and 10 swollen joints at entry.
+./technical/biomed/ar745.txt:        painful and debilitating joints, with progressive
+./technical/biomed/bcr284.txt:          60-70% confluence were treated with SAHA (courtesy of Dr
+```
+###### Explanation: 
+- The `-e` allows us to search for multiple differe patterns at once.
+- For the first example, I looked for the occurrences of the words "blood" and "medicine" in the `biomed` directory and found that there are 1,689 occurrences of them.
+- In the second example, I did not use `wc` and just returned the actual occurrences of the words "court" and "painful".
+- This can be useful when searching for multiple different patterns all at once. 
