@@ -93,7 +93,7 @@ $ grep -ro "statement" ./technical/biomed | wc -l
 
 ##### Example 1: 
 
-```java
+```
 $ grep -nr "imagine" ./technical/biomed
 
 ./technical/biomed/1471-213X-1-13.txt:383:          dlA dx2 mutant embryos. We imagined
@@ -146,9 +146,9 @@ $grep -m 1 -B 2 -A 2 "emergency" ./technical/911report/chapter-1.txt
 ```
 ##### Example 2: 
 
-```java
-$grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 
+```$grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed```
+```
 ./technical/biomed/1471-2091-2-13.txt-        The dispersion of the intein as a selfish genetic
 ./technical/biomed/1471-2091-2-13.txt:        element is consistent with the work of Goddard and Burt [
 ./technical/biomed/1471-2091-2-13.txt-        38 ] on the persistence of an intron with homing
@@ -179,6 +179,7 @@ $grep -r -m 1 -B 1 -A 1 "God" ./technical/biomed
 - The `-m` is used to limit the count of matches. Basically, if there is no `-m` every case of the paramter will be displayed with the before and after counts.
 - In the second exampele, I used `-r` (recursive), which allowed me to see multiple occurrences of the word "God" wil one line before and one line after it.
 - This can be useful if one is trying to track down a certain pattern, but needs to see some context for the word. Therefore one can use before and after to see what surrounds the pattern.
+
 #### Number 4 - searching for multiple patterns:
 
 ##### Example 1:
